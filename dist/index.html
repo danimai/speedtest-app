@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Velocidade da Internet</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<div class="loader" style="position:fixed;left:0px;top:0px;width:100%;height:100%;z-index:9999;background:url('./loader.gif') center no-repeat;"></div>
+		<div id="app" class="state-start first-time" style="display: none;">
+			<h1>Velocidade da <span>Internet</span></h1>
+			<a href="#" id="start">Medir</a>
+			<input type="text" id="username" name="username" class="hidden-display hidden-opacity-" placeholder="Nome da conta">
+			<div id="results"></div>
+		</div>
+		<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
