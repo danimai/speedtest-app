@@ -1,0 +1,332 @@
+@import "fonts.css";
+
+/*** General ***/
+:root {
+  --cor: #666;
+  --tempo: 600ms;
+}
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+#app {
+  font-family: 'Open Sans';
+  font-variant: all-small-caps;
+  line-height: .8;
+  color: var(--cor);
+  position: relative;
+}
+#app h1 span {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 100;
+}
+
+/*** Components ***/
+#start {
+  display: none;
+  position: relative;
+  width: 90px;
+  height: 10px;
+  top: 2px;
+  margin: auto;
+  padding: 10px;
+  font-size: 1.2em;
+  line-height: .2;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--cor);
+  border: 2px solid var(--cor);
+  border-radius: 50px;
+}
+#start:hover {
+  color: #fff;
+  background-color: var(--cor);
+}
+.container {
+  position: relative;
+  display: block;
+  margin: auto;
+  border: 2px solid var(--cor);
+}
+#results .container,
+.new-result {
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  border: 2px solid rgba(102, 102, 102, .5);
+  border-radius: 20px;
+  padding: 10px;
+  width: 180px;
+  height: 100px;
+  top: 0;
+}
+.container h3 {
+  font-size: 1.3em;
+  font-weight: 400;
+  margin: 17px 0 0 0;
+  z-index: 1;
+}
+.container .speed {
+  font-size: 7em;
+  line-height: .4;
+}
+.container .speed::after {
+  content: 'MBPS';
+  display: block;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 100;
+}
+.download, .upload {
+  position: absolute;
+  height: 0;
+  z-index: 3;
+}
+.download {
+  top: 10px;
+  right: 10px;
+}
+.upload {
+  top: -30px;
+  right: 40px;
+}
+.sprite-right, .sprite-left {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  top: 0;
+  box-sizing: border-box;
+}
+.sprite-left {
+  left: 0;
+  right: -1px;
+}
+.sprite-right {
+  right: 0;
+  z-index: 1;
+}
+.sprite-right::before,
+.sprite-left::before {
+  content: '';
+  position: absolute;
+  background: white;
+  height: 178px;
+  transform: scaleY(0);
+}
+.sprite-right::before {
+  transform-origin: top;
+}
+.sprite-left::before {
+  transform-origin: bottom;
+}
+.timestamp {
+  margin-top: -1px;
+}
+.timestamp span {
+  font-weight: 600;
+}
+#results {
+  display: none;
+  margin-top: 33px;
+}
+#username {
+  display: block;
+  position: relative;
+  margin: 15px auto;
+  text-align: center;
+  padding: 5px 4px;
+  border: 1px solid var(--cor);
+  border-radius: 15px;
+  outline: none;
+  opacity: .5;
+  top: -120px;
+}
+#username:focus {
+  opacity: 1;
+}
+
+.remove {
+  display: block;
+  position: absolute;
+  z-index: 3;
+  right: 10px;
+  top: 10px;
+  width: 15px;
+  height: 15px;
+  opacity: 0.5;
+}
+.remove::before, .remove::after {
+  position: absolute;
+  left: 6px;
+  content: ' ';
+  height: 12px;
+  width: 2px;
+  background-color: var(--cor);
+}
+.remove::before {
+  transform: rotate(45deg);
+}
+.remove::after {
+  transform: rotate(-45deg);
+}
+
+#app, #start, #results, .container, .download, .upload, #username, .timestamp, .remove {
+  -webkit-transition: all var(--tempo);
+     -moz-transition: all var(--tempo);
+      -ms-transition: all var(--tempo);
+       -o-transition: all var(--tempo);
+          transition: all var(--tempo);
+}
+
+#container .download, 
+#container .upload, 
+#container .timestamp, 
+#container .remove {
+  opacity: 0;
+}
+
+/*** States ***/
+.state-start #start,
+.state-start #results {
+  display: block;
+}
+.state-start #container {
+  margin-top: -32px;
+  z-index: -1;
+  border-radius: 50px;
+  /*display: block;*/
+  padding: 10px;
+  width: 90px;
+  height: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.state-start.first-time #username {
+  top: 0;
+}
+.state-start.first-time #results {
+  margin-top: 0;
+}
+.new-result {
+  top: 60px;
+}
+.state-start:not(.first-time) #results .container:first-child {
+  display: none;
+}
+#results .container .download,
+#results .container .upload,
+.new-result .download,
+.new-result .upload {
+  top: 20px;
+  transform: scale(0.7);
+}
+#results .container .download,
+.new-result .download {
+  left: -80px;
+}
+#results .container .upload,
+.new-result .upload {
+  right: 10px;
+}
+
+.state-downloading .container,
+.state-uploading .container {
+  border-radius: 170px;
+  width: 170px;
+  height: 170px;
+}
+.state-downloading #container .download {
+  opacity: 1;
+  right: 40px;
+}
+.state-downloading .sprite-right::before {
+  top: -5px;
+  right: -5px;
+  left: 0;
+  transform: scaleY(1);
+  transition: linear 4.8s .5s;
+}
+.state-downloading .sprite-left::before {
+  bottom: -5px;
+  left: -5px;
+  right: -1px;
+  transform: scaleY(1);
+  transition: linear 4.8s 5.2s;
+}
+
+.state-uploading #container .download {
+  opacity: 1;
+  top: 100%;
+  right: 40px;
+  transform: scale(0.7);
+}
+.state-uploading #container .upload {
+  opacity: 1;
+  top: 10px;
+  right: 40px;
+}
+.state-uploading .sprite-right::before {
+  bottom: -5px;
+  right: -5px;
+  left: 0;
+  transform: scaleY(0);
+  transition: linear 4.8s 5.2s;
+}
+.state-uploading .sprite-left::before {
+  top: -5px;
+  left: -5px;
+  right: -1px;
+  transform: scaleY(0);
+  transition: linear 4.8s .5s;
+}
+
+.state-result .container {
+  border-radius: 20px;
+  display: block;
+  padding: 10px;
+  width: 180px;
+  height: 100px;
+  top: -10px;
+}
+.state-result #start {
+  display: none;
+  top: -50px;
+}
+.state-result #username {
+  display: none;
+  top: -200px;
+}
+.state-result .container .download,
+.state-result .container .upload {
+  opacity: 1;
+  top: 16px;
+  transform: scale(0.7);
+}
+.state-result .container .download {
+  /*right: 100px;*/
+}
+.state-result .container .upload {
+  right: 10px;
+}
+.state-result .container .timestamp {
+  opacity: 1;
+}
+.state-result .container .remove {
+  opacity: .5;
+}
+.state-result .container .remove:hover {
+  opacity: 1;
+}
+
+.hidden-display {
+  display: none !important;
+}
+.hidden-opacity {
+  opacity: 0 !important;
+}
