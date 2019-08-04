@@ -104,7 +104,7 @@ import './style.css';
 		// inicia a view
 		init: function() {
 			// esconde animação de carregamento
-			$('.loader').fadeOut('slow');
+			$('.loader').fadeOut('fast');
 			// mostra interface
 			$('#app').removeAttr('style');
 			// $('#app').removeClass('hidden-opacity');
