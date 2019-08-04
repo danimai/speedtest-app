@@ -126,7 +126,7 @@ import './style.css';
 		},
 		// renderiza a tela inicial e mostra os resultados anteriores, caso existam
 		render_start: function() {
-			if ( controller.get_results().length ) {
+			if ( controller.get_results().length > 0 ) {
 				$('#app').removeClass('first-time');
 			}
 			$('#app').removeClass('state-result');
@@ -177,7 +177,7 @@ import './style.css';
 		// renderiza o resultado da medição
 		render_result: function(result) {
 			$('#app').removeClass('state-uploading');
-			$('#app').addClass('state-result');
+			$('#app').addClass('state-result restart');
 			$('#container .timestamp').html(result.timestamp);
 			$('#container').addClass('new-result');
 			$('#container').removeAttr('id');

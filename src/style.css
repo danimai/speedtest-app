@@ -207,7 +207,7 @@ body {
   overflow: hidden;
 }
 #app.state-start.first-time {
-  margin-top: 50%;
+  margin-top: 30vh;
 }
 .state-start.first-time #username {
   display: none;
@@ -216,7 +216,7 @@ body {
 .state-start.first-time #results {
   margin-top: 0;
 }
-.state-start:not(.first-time) #results .container:first-child {
+.state-start.restart #results .container:first-child {
   display: none;
 }
 #results .container .download,
