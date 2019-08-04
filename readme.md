@@ -17,4 +17,4 @@ Estrutura de arquivos:
 ![](docs/speedtest-app-mockup.gif)
 
 ## Fluxograma
-![](docs/fluxograma.gif)
+![](docs/fluxograma.png)
