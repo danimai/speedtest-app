@@ -9,13 +9,7 @@ import './style.css';
 		// estrutura de dados
 		data: [{
 			username: '',
-			results: [
-				{
-					timestamp: '02/08/2019 17:29:34',
-					download: 89,
-					upload: 91,
-				}
-			]
+			results: []
 		}],
 		// inicia o localStorage
 		init: function(){
@@ -132,6 +126,9 @@ import './style.css';
 		},
 		// renderiza a tela inicial e mostra os resultados anteriores, caso existam
 		render_start: function() {
+			if ( controller.get_results().length ) {
+				$('#app').removeClass('first-time');
+			}
 			$('#app').removeClass('state-result');
 			$('#app').addClass('state-start');
 			view.create_container();
@@ -155,7 +152,7 @@ import './style.css';
 				'	<div class="sprite-left"></div>'+
 				'	<div class="sprite-right"></div>'+
 				'</div>';
-			$(container_html).insertAfter('#start');
+			$(container_html).insertAfter('#username');
 		},
 		// renderiza o container
 		render_container: function() {
@@ -163,7 +160,7 @@ import './style.css';
 		},
 		// renderiza o estado downloading
 		render_downloading: function() {
-			$('#app').removeClass('state-start first-time');
+			$('#app').removeClass('state-start');
 			$('#app').addClass('state-downloading');
 			$('#username').addClass('hidden-display');
 			$('.new-result').remove();

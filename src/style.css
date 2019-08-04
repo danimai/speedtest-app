@@ -15,6 +15,7 @@ body {
   vertical-align: baseline;
 }
 #app {
+  margin-top: 50px;
   font-family: 'Open Sans';
   font-variant: all-small-caps;
   line-height: .8;
@@ -133,7 +134,6 @@ body {
 }
 #results {
   display: none;
-  margin-top: 33px;
 }
 #username {
   display: block;
@@ -145,7 +145,6 @@ body {
   border-radius: 15px;
   outline: none;
   opacity: .5;
-  top: -120px;
 }
 #username:focus {
   opacity: 1;
@@ -207,14 +206,15 @@ body {
   cursor: pointer;
   overflow: hidden;
 }
+#app.state-start.first-time {
+  margin-top: 50%;
+}
 .state-start.first-time #username {
+  display: none;
   top: 0;
 }
 .state-start.first-time #results {
   margin-top: 0;
-}
-.new-result {
-  top: 60px;
 }
 .state-start:not(.first-time) #results .container:first-child {
   display: none;
