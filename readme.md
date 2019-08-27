@@ -5,6 +5,8 @@ Otimizado e servido com Webpack.
 
 Para iniciar o servidor em [localhost:8080](http://localhost:8080/) utilize: `$ npm start`
 
+Acesse o aplicativo em [https://danimai.github.io/speedtest-app/dist/](https://danimai.github.io/speedtest-app/dist/)
+
 Estrutura de arquivos:
  
 `docs/` mockup original em Adobe XD e GIF animado apresentando a interface gráfica
